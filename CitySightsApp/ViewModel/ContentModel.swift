@@ -47,11 +47,55 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         // gives us the location of the user
         print(locations.first ?? "no location")
         
-        // stop requesting the location after we get it once
-        locationManager.stopUpdatingLocation()
+        let userLocation = locations.first
+        if userLocation != nil  {
+            // have location
+            
+            // stop requesting the location after we get it once
+            locationManager.stopUpdatingLocation()
+            
+            // TODO: if we have the coordinates of the user, send into yelp api
+            getBusinesses(category: "arts", location: userLocation!)
+            
+        }
+    }
+    
+    func getBusinesses(category:String, location:CLLocation) {
         
-        // TODO: if we have the coordinates of the user, send into yelp api
-
+        // create URL
+        // let urlString = "https://api.yelp.com/v3/businesses/search?latitude=\(location.coordinate.latitude)&longitude=\(location.coordinate.longitude)&categories=\(category)&limit=6"
+        
+        var urlComponents = URLComponents(string: Constants.apiURL)
+        urlComponents?.queryItems = [
+            URLQueryItem(name: "latitude", value: String(location.coordinate.latitude)),
+            URLQueryItem(name: "longitude", value: String(location.coordinate.longitude)),
+            URLQueryItem(name: "categories", value: String(category)),
+            URLQueryItem(name: "limit", value: "6")
+        ]
+        let url = urlComponents?.url
+        
+        if let url = url {
+            // create URL Request
+            var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+            // request header
+            request.httpMethod = "GET"
+            request.addValue("Bearer \(Constants.apiKey)", forHTTPHeaderField: "Authorization")
+            
+            // get URL session
+            let session = URLSession.shared
+            
+            // create Data Task
+            let dataTask = session.dataTask(with: request) { (data, response, error) in
+                
+                if error == nil {
+                    print(response!)
+                }
+            }
+            // start data task
+            dataTask.resume()
+            
+        }
+        
         
     }
 }
