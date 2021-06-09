@@ -92,6 +92,7 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
                 }
             }
             // start data task
+            
             dataTask.resume()
             
         }
