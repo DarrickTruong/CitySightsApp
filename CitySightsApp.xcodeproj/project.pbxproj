@@ -13,6 +13,8 @@
 		C96D2750267033C8008A3BBA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C96D274F267033C8008A3BBA /* Preview Assets.xcassets */; };
 		C96D275B26703DDC008A3BBA /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96D275A26703DDC008A3BBA /* ContentModel.swift */; };
 		C96D275E26714BD3008A3BBA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96D275D26714BD3008A3BBA /* Constants.swift */; };
+		C96D276026715888008A3BBA /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96D275F26715888008A3BBA /* Business.swift */; };
+		C96D276226715D57008A3BBA /* BusinessSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96D276126715D57008A3BBA /* BusinessSearch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		C96D2751267033C8008A3BBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C96D275A26703DDC008A3BBA /* ContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentModel.swift; sourceTree = "<group>"; };
 		C96D275D26714BD3008A3BBA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C96D275F26715888008A3BBA /* Business.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
+		C96D276126715D57008A3BBA /* BusinessSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessSearch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 		C96D275726703BC7008A3BBA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C96D275F26715888008A3BBA /* Business.swift */,
+				C96D276126715D57008A3BBA /* BusinessSearch.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -179,7 +185,9 @@
 				C96D274B267033C4008A3BBA /* LaunchView.swift in Sources */,
 				C96D2749267033C4008A3BBA /* CitySightsApp.swift in Sources */,
 				C96D275B26703DDC008A3BBA /* ContentModel.swift in Sources */,
+				C96D276026715888008A3BBA /* Business.swift in Sources */,
 				C96D275E26714BD3008A3BBA /* Constants.swift in Sources */,
+				C96D276226715D57008A3BBA /* BusinessSearch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

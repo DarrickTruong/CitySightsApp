@@ -10,6 +10,9 @@ import CoreLocation
 
 class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
+    @Published var restaurants = [Business]()
+    @Published var sights = [Business]()
+    
     var locationManager = CLLocationManager()
     
     override init() {
@@ -55,8 +58,10 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             locationManager.stopUpdatingLocation()
             
             // TODO: if we have the coordinates of the user, send into yelp api
-            getBusinesses(category: "arts", location: userLocation!)
+            getBusinesses(category: Constants.sightsKey, location: userLocation!)
             
+//            getBusinesses(category: Constants.restaurantsKey, location: userLocation!)
+
         }
     }
     
@@ -88,7 +93,35 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             let dataTask = session.dataTask(with: request) { (data, response, error) in
                 
                 if error == nil {
-                    print(response!)
+                    
+                    do {
+                        // parse json
+                        let decoder = JSONDecoder()
+                        let result = try decoder.decode(BusinessSearch.self, from: data!)
+                        
+                        
+                        // need this so main thread handles the published assignment
+                        DispatchQueue.main.async {
+                            
+//                            if category == Constants.sightsKey {
+//                                self.sights = result.businesses
+//                            } else if category == Constants.restaurantsKey {
+//                                self.restaurants = result.businesses
+//                            }
+                            switch category {
+                            case Constants.sightsKey:
+                                self.sights = result.businesses
+                            case Constants.restaurantsKey:
+                                self.restaurants = result.businesses
+                            default:
+                                break
+                            }
+                        }
+                        
+                    } catch{
+                        // error from decoding
+                        print(error)
+                    }
                 }
             }
             // start data task
