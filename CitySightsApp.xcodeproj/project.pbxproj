@@ -7,19 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C96D2749267033C4008A3BBA /* CitySightsAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96D2748267033C4008A3BBA /* CitySightsAppApp.swift */; };
-		C96D274B267033C4008A3BBA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96D274A267033C4008A3BBA /* ContentView.swift */; };
+		C96D2749267033C4008A3BBA /* CitySightsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96D2748267033C4008A3BBA /* CitySightsApp.swift */; };
+		C96D274B267033C4008A3BBA /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96D274A267033C4008A3BBA /* LaunchView.swift */; };
 		C96D274D267033C8008A3BBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C96D274C267033C8008A3BBA /* Assets.xcassets */; };
 		C96D2750267033C8008A3BBA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C96D274F267033C8008A3BBA /* Preview Assets.xcassets */; };
+		C96D275B26703DDC008A3BBA /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96D275A26703DDC008A3BBA /* ContentModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C96D2745267033C4008A3BBA /* CitySightsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CitySightsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C96D2748267033C4008A3BBA /* CitySightsAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySightsAppApp.swift; sourceTree = "<group>"; };
-		C96D274A267033C4008A3BBA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C96D2748267033C4008A3BBA /* CitySightsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySightsApp.swift; sourceTree = "<group>"; };
+		C96D274A267033C4008A3BBA /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		C96D274C267033C8008A3BBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C96D274F267033C8008A3BBA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C96D2751267033C8008A3BBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C96D275A26703DDC008A3BBA /* ContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +54,7 @@
 		C96D2747267033C4008A3BBA /* CitySightsApp */ = {
 			isa = PBXGroup;
 			children = (
-				C96D2748267033C4008A3BBA /* CitySightsAppApp.swift */,
+				C96D2748267033C4008A3BBA /* CitySightsApp.swift */,
 				C96D275926703BD7008A3BBA /* View */,
 				C96D275826703BCD008A3BBA /* ViewModel */,
 				C96D275726703BC7008A3BBA /* Model */,
@@ -81,6 +83,7 @@
 		C96D275826703BCD008A3BBA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				C96D275A26703DDC008A3BBA /* ContentModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -88,7 +91,7 @@
 		C96D275926703BD7008A3BBA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C96D274A267033C4008A3BBA /* ContentView.swift */,
+				C96D274A267033C4008A3BBA /* LaunchView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -162,8 +165,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C96D274B267033C4008A3BBA /* ContentView.swift in Sources */,
-				C96D2749267033C4008A3BBA /* CitySightsAppApp.swift in Sources */,
+				C96D274B267033C4008A3BBA /* LaunchView.swift in Sources */,
+				C96D2749267033C4008A3BBA /* CitySightsApp.swift in Sources */,
+				C96D275B26703DDC008A3BBA /* ContentModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
