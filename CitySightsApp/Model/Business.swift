@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Business: Decodable {
+struct Business: Decodable, Identifiable{
     // making variables optional, if api doesn't return a value for each variable, the decoding will break
     var id:String?
     var alias:String?

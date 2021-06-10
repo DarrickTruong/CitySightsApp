@@ -10,6 +10,8 @@ import CoreLocation
 
 class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
+    @Published var authorizationState = CLAuthorizationStatus.notDetermined
+    
     @Published var restaurants = [Business]()
     @Published var sights = [Business]()
     
@@ -32,6 +34,9 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     // MARK: locationManager delegate functions
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        
+        //set authorizationState, to be used by LaunchView
+        authorizationState = locationManager.authorizationStatus
         
         if locationManager.authorizationStatus == .authorizedAlways || locationManager.authorizationStatus == .authorizedWhenInUse {
             
@@ -57,10 +62,9 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             // stop requesting the location after we get it once
             locationManager.stopUpdatingLocation()
             
-            // TODO: if we have the coordinates of the user, send into yelp api
+            // if we have the coordinates of the user, send into yelp api
             getBusinesses(category: Constants.sightsKey, location: userLocation!)
-            
-//            getBusinesses(category: Constants.restaurantsKey, location: userLocation!)
+            getBusinesses(category: Constants.restaurantsKey, location: userLocation!)
 
         }
     }
@@ -74,7 +78,7 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         urlComponents?.queryItems = [
             URLQueryItem(name: "latitude", value: String(location.coordinate.latitude)),
             URLQueryItem(name: "longitude", value: String(location.coordinate.longitude)),
-            URLQueryItem(name: "categories", value: String(category)),
+            URLQueryItem(name: "categories", value: category),
             URLQueryItem(name: "limit", value: "6")
         ]
         let url = urlComponents?.url
@@ -82,6 +86,7 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         if let url = url {
             // create URL Request
             var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+            
             // request header
             request.httpMethod = "GET"
             request.addValue("Bearer \(Constants.apiKey)", forHTTPHeaderField: "Authorization")
@@ -108,6 +113,7 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
 //                            } else if category == Constants.restaurantsKey {
 //                                self.restaurants = result.businesses
 //                            }
+                            
                             switch category {
                             case Constants.sightsKey:
                                 self.sights = result.businesses
@@ -124,12 +130,10 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
                     }
                 }
             }
-            // start data task
             
+            // start data task
             dataTask.resume()
             
         }
-        
-        
     }
 }
