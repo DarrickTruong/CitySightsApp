@@ -13,7 +13,7 @@ struct BusinessSectionHeader: View {
     
     var body: some View {
         
-        ZStack {
+        ZStack (alignment: .leading) {
             Rectangle()
                 .foregroundColor(.white)
             Text(title)

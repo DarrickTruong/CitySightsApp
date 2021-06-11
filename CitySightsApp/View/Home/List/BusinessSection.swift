@@ -16,15 +16,15 @@ struct BusinessSection: View {
         
         Section(header: BusinessSectionHeader(title: title)) {
             ForEach(businesses) { business in
-                Text(business.name ?? "")
-                Divider()
+                
+                BusinessRow(business: business)
             }
         }
     }
 }
 
-struct BusinessSection_Previews: PreviewProvider {
-    static var previews: some View {
-        BusinessSection()
-    }
-}
+//struct BusinessSection_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BusinessSection()
+//    }
+//}

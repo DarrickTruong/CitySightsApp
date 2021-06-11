@@ -105,6 +105,19 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
                         let result = try decoder.decode(BusinessSearch.self, from: data!)
                         
                         
+                        // sort business by distance
+                        var businesses = result.businesses
+                        businesses.sort { (b1, b2) -> Bool in
+                            return b1.distance ?? 0 < b2.distance ?? 0
+                        }
+                        
+                        
+                        // call image function for all businesses
+                        for b in businesses {
+                            b.getImageData()
+                        }
+                        
+                        
                         // need this so main thread handles the published assignment
                         DispatchQueue.main.async {
                             
@@ -116,9 +129,9 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
                             
                             switch category {
                             case Constants.sightsKey:
-                                self.sights = result.businesses
+                                self.sights = businesses
                             case Constants.restaurantsKey:
-                                self.restaurants = result.businesses
+                                self.restaurants = businesses
                             default:
                                 break
                             }

@@ -27,11 +27,14 @@ struct HomeView: View {
                         Spacer()
                         Text("Switch to map view")
                     }
-                }
+                    
+                    Divider()
+                    
+                    // show business list view
+                    BusinessList()
+                }.padding([.horizontal, .top])
                 
-                Divider()
-                // show business list view
-                BusinessList()
+               
                 
             } else {
                 // show map
