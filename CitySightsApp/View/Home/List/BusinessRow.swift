@@ -44,7 +44,7 @@ struct BusinessRow: View {
                 Text("\(business.reviewCount ?? 0) Reviews")
                     .font(.caption)
             }
-        }
+        }.foregroundColor(.black)
         
         Divider()
     }

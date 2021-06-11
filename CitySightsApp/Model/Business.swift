@@ -24,12 +24,15 @@ class Business: Decodable, Identifiable, ObservableObject{
     var coordinates: Coordinate?
     var transactions: [String]?
     var location:Location?
+    var displayPhone:String?
+    var phone:String?
     var distance:Double?
     
     enum CodingKeys:String, CodingKey {
         case imageUrl = "image_url"
         case isClosed = "is_closed"
         case reviewCount = "review_count"
+        case displayPhone = "display_phone"
         
         case id
         case alias
@@ -40,6 +43,7 @@ class Business: Decodable, Identifiable, ObservableObject{
         case coordinates
         case transactions
         case location
+        case phone
         case distance
     }
     
