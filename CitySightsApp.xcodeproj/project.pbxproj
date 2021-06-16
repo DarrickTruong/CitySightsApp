@@ -58,8 +58,9 @@
 		C95A02CA2672B09F0033E5DD /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				C95A0316267A70820033E5DD /* Map */,
 				C95A02CB2672B0BB0033E5DD /* HomeView.swift */,
+				C95A0313267412A10033E5DD /* Detail */,
+				C95A0316267A70820033E5DD /* Map */,
 				C95A02CD2672B1720033E5DD /* List */,
 			);
 			path = Home;
@@ -72,7 +73,6 @@
 				C95A02D32672B95B0033E5DD /* BusinessSection.swift */,
 				C95A02D02672B8CD0033E5DD /* BusinessSectionHeader.swift */,
 				C95A03112673E2C60033E5DD /* BusinessRow.swift */,
-				C95A0313267412A10033E5DD /* Detail */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -116,9 +116,9 @@
 				C96D275926703BD7008A3BBA /* View */,
 				C96D275826703BCD008A3BBA /* ViewModel */,
 				C96D275726703BC7008A3BBA /* Model */,
+				C96D275C26714BB7008A3BBA /* Helpers */,
 				C96D274C267033C8008A3BBA /* Assets.xcassets */,
 				C96D2751267033C8008A3BBA /* Info.plist */,
-				C96D275C26714BB7008A3BBA /* Helpers */,
 				C96D274E267033C8008A3BBA /* Preview Content */,
 			);
 			path = CitySightsApp;

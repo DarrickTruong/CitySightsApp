@@ -11,6 +11,7 @@ struct HomeView: View {
     
     @State var isMapShowing = false
     @EnvironmentObject var model:ContentModel
+    @State var selectedBusiness:Business?
     
     var body: some View {
         
@@ -42,10 +43,16 @@ struct HomeView: View {
                     
                     
                 } else {
-                    // show map
                     
-                    BusinessMap()
+                    // show map
+                    BusinessMap(selectedBusiness: $selectedBusiness)
                         .ignoresSafeArea()
+                        .sheet(item: $selectedBusiness) { business in
+                            
+                            // create a business detail view instance
+                            // pass in selected business
+                            BusinessDetail(business: business)
+                        }
                 }
             }
             
