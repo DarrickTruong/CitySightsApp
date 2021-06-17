@@ -18,7 +18,7 @@ struct BusinessList: View {
                 
                 BusinessSection(businesses: model.restaurants, title: "Restaurants")
                 
-                Divider()
+                
                 
                 BusinessSection(businesses: model.sights, title: "Sights")
 

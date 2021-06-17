@@ -21,7 +21,7 @@ struct BusinessSection: View {
                     destination: BusinessDetail(business: business),
                     label: {
                         BusinessRow(business: business)                    })
-                
+                DashedDivider()
             }
         }
     }

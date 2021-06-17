@@ -18,7 +18,7 @@ struct BusinessSectionHeader: View {
                 .foregroundColor(.white)
             Text(title)
                 .font(.headline)
-        }
+        }.frame(height:36)
     }
 }
 

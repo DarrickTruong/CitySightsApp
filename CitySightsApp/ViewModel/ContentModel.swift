@@ -11,9 +11,9 @@ import CoreLocation
 class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     @Published var authorizationState = CLAuthorizationStatus.notDetermined
-    
     @Published var restaurants = [Business]()
     @Published var sights = [Business]()
+    @Published var placemark: CLPlacemark?
     
     var locationManager = CLLocationManager()
     
@@ -26,10 +26,14 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager.delegate = self
         
         // request permission from the user
+//        locationManager.requestWhenInUseAuthorization() 
+        
+        
+        
+    }
+    
+    func requestGeolocationPermission() {
         locationManager.requestWhenInUseAuthorization()
-        
-        
-        
     }
     
     // MARK: locationManager delegate functions
@@ -61,6 +65,18 @@ class ContentModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             
             // stop requesting the location after we get it once
             locationManager.stopUpdatingLocation()
+            
+            
+            // get the placemark of user
+            let geoCoder = CLGeocoder()
+            
+            geoCoder.reverseGeocodeLocation(userLocation!) { (placemarks, error) in
+                
+                if error == nil && placemarks != nil {
+                    
+                    self.placemark = placemarks?.first
+                }
+            }
             
             // if we have the coordinates of the user, send into yelp api
             getBusinesses(category: Constants.sightsKey, location: userLocation!)

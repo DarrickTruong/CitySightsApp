@@ -15,7 +15,7 @@ struct LaunchView: View {
         
         // if authorization not determined, show onboarding
         if model.authorizationState == .notDetermined {
-            
+            OnboardingView()
         }
         
         // if authorization, always or whenusing, show homeview
