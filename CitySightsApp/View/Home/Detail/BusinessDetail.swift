@@ -10,6 +10,7 @@ import SwiftUI
 struct BusinessDetail: View {
     
     var business:Business
+    @State private var showDirections = false
     
     var body: some View {
         
@@ -41,23 +42,8 @@ struct BusinessDetail: View {
             
             Group {
                 
-                // business name
-                Text(business.name!)
-                    .font(.largeTitle)
+                BusinessTitle(business: business)
                     .padding()
-                
-                // loop through display address
-                if business.location?.displayAddress != nil {
-                    
-                    ForEach(business.location!.displayAddress!, id:\.self) { addressline in
-                        Text(addressline).padding(.horizontal)
-                    }
-                }
-                
-                // rating
-                Image("regular_\(business.rating ?? 0)")
-                    .padding(.horizontal)
-                
                 
                 Divider()
                 
@@ -69,8 +55,6 @@ struct BusinessDetail: View {
                     Spacer()
                     Link("Call", destination: URL(string: "tel:\(business.phone ?? "")")!)
                 }.padding()
-                
-                Divider()
                 
                 // reviews
                 HStack {
@@ -97,6 +81,8 @@ struct BusinessDetail: View {
             }
             
             Button(action: {
+                // TODO: show directions
+                showDirections = true
                 
             }, label: {
                 
@@ -112,12 +98,9 @@ struct BusinessDetail: View {
                         .bold()
                 }
             }).padding()
+            .sheet(isPresented: $showDirections, content: {
+                DirectionsView(business: business)
+            })
         }
     }
 }
-
-//struct BusinessDetail_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BusinessDetail()
-//    }
-//}
